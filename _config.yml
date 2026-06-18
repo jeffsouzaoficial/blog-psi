@@ -6,6 +6,8 @@ baseurl: "/blog-psi"
 plugins:
   - jekyll-feed
 
+show_friends_group: false
+
 # Build settings
 permalink: /posts/:title/
 
