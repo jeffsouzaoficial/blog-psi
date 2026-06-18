@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="post-page">
   <h1 class="post-title">{{ page.title }}</h1>
-  <p class="post-meta">{{ page.date | date_pt_br }}</p>
+  <p class="post-meta">{% assign d = page.date | date: "%-d" %}{% assign m = page.date | date: "%-m" | minus: 1 %}{% assign months = "janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | split: "," %}{{ d }} de {{ months[m] }} de {{ page.date | date: "%Y" }}</p>
 
   {% if page.image %}
   <div class="post-image">
