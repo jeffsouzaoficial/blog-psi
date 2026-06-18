@@ -1,0 +1,32 @@
+---
+layout: default
+title: Bibliografia
+---
+
+<main class="page-width">
+  <div class="page-content">
+    <h1 class="page-title">Bibliografia Recomendada</h1>
+
+    <div class="biblio-grid">
+      {% for item in site.data.bibliografia %}
+      <div class="biblio-item">
+        {% if item.imagem %}
+        <div class="biblio-thumb">
+          <img src="{{ item.imagem | relative_url }}" alt="{{ item.titulo }}">
+        </div>
+        {% endif %}
+        <div class="biblio-info">
+          <h3 class="biblio-title">{{ item.titulo }}</h3>
+          <p class="biblio-author">{{ item.autor }}</p>
+          <p class="biblio-desc">{{ item.descricao }}</p>
+          {% if item.link != blank %}
+          <a href="{{ item.link }}" target="_blank" rel="noopener" class="biblio-link">Ver mais →</a>
+          {% endif %}
+        </div>
+      </div>
+      {% else %}
+      <p style="color:#999;font-size:0.9rem;">Nenhum livro cadastrado ainda.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>

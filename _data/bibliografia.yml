@@ -1,0 +1,13 @@
+- titulo: "O Mal-Estar na Civilização"
+  autor: "Sigmund Freud"
+  descricao: "Obra fundamental que investiga o conflito entre os impulsos individuais e as exigências da civilização."
+  imagem: "assets/bibliografia/mal-estar.jpg"
+- titulo: "A Interpretação dos Sonhos"
+  autor: "Sigmund Freud"
+  descricao: "Marco da psicanálise que estabelece o sonho como via de acesso ao inconsciente."
+  imagem: "assets/bibliografia/Interpretacao-dos-sonhos.jpg"
+
+- titulo: "Psicoanalisis Dialectico"
+  autor: "Igor Caruso"
+  descricao: "Igor Caruso propone integrar la psicología profunda con los aspectos sociales y existenciales del ser humano."
+  imagem: "assets/bibliografia/psicoanalisis-dialectico.jpg"

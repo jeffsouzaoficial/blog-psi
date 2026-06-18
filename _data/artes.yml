@@ -1,0 +1,9 @@
+- titulo: "Exemplo de Arte"
+  imagem: "assets/artes/flores.jpg"
+  descricao: "Breve explicação sobre esta arte, o que representa e o que inspirou sua criação."
+  autor: "Nome do Artista"
+
+- titulo: "Casal Apaixonado"
+  imagem: "assets/artes/casal.jpg"
+  descricao: "Breve explicação sobre esta arte, o que representa e o que inspirou sua criação."
+  autor: "id"

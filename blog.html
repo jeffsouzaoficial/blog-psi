@@ -1,0 +1,32 @@
+---
+layout: default
+title: Blog
+---
+
+<main class="page-width">
+  <div class="page-content">
+    <h1 class="page-title">Blog</h1>
+
+    {% assign posts = site.posts %}
+    {% if posts.size > 0 %}
+      {% for post in posts %}
+      <div class="blog-post-item">
+        {% if post.image %}
+        <div class="blog-post-thumb">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
+        <div class="blog-post-info">
+          <a href="{{ post.url | relative_url }}">
+            {% if post.category %}<span class="post-category">{{ post.category }}</span>{% endif %}
+            <h2 class="post-title">{{ post.title }}</h2>
+            <p class="post-excerpt">{{ post.excerpt | strip_html }}</p>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="color:#999;font-size:0.9rem;">Nenhum artigo publicado ainda.</p>
+    {% endif %}
+  </div>
+</main>

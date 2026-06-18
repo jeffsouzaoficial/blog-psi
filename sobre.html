@@ -1,0 +1,20 @@
+---
+layout: default
+title: Sobre
+---
+
+<main class="page-width">
+  <div class="page-content" style="max-width:700px;">
+    <h1 class="page-title" style="margin-bottom:8px;">Sobre</h1>
+    <div class="page-divider"></div>
+
+    <div class="sobre-layout">
+      <div class="sobre-foto">
+        <img src="{{ site.data.sobre.foto | relative_url }}" alt="Foto de Jefferson de Souza">
+      </div>
+      <div class="sobre-texto">
+        {{ site.data.sobre.texto | newline_to_br }}
+      </div>
+    </div>
+  </div>
+</main>

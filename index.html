@@ -1,0 +1,188 @@
+---
+layout: default
+title: Blog
+---
+
+<main class="page-width">
+  <div class="homepage__top-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="homepage__top-grid__left">
+
+      <section class="homepage__top-grid__intro">
+        <h2 class="section-label">Introdução</h2>
+        <p class="intro-text">{{ site.data.introducao.texto }}</p>
+      </section>
+
+      <section class="homepage__top-grid__phrase">
+        <h2 class="section-label">Frases</h2>
+        {% assign ultima = site.data.frases | last %}
+        <blockquote class="phrase-block" style="display:flex;gap:16px;align-items:center;">
+          {% if ultima.foto %}
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;background:#E0D8CC;">
+            <img src="{{ ultima.foto | relative_url }}" alt="{{ ultima.autor }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          {% endif %}
+          <div>
+            <p style="margin:0 0 4px;">"{{ ultima.frase }}"</p>
+            <cite>— {{ ultima.autor }}</cite>
+          </div>
+        </blockquote>
+      </section>
+
+      {% assign ultima_arte = site.data.artes | last %}
+      <section class="homepage__prints-promo">
+        <h2 class="section-label">Arte</h2>
+        {% if ultima_arte %}
+        <a href="/arte" style="text-decoration:none;color:inherit;">
+          <div style="border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:#F5F0E8;">
+            <img src="{{ ultima_arte.imagem | relative_url }}" alt="{{ ultima_arte.titulo }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <p class="art-caption">{{ ultima_arte.titulo }}</p>
+          <p style="font-size:0.8rem;color:#888;text-align:center;margin:4px 0 0;line-height:1.4;">A arte como expressão do inconsciente — clique para explorar</p>
+        </a>
+        {% else %}
+        <div class="art-placeholder">
+          <div class="art-image-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <p class="art-caption">Última arte publicada</p>
+        </div>
+        {% endif %}
+      </section>
+
+      <section class="homepage__bibliografia">
+        <h2 class="section-label">Bibliografia</h2>
+        {% for item in site.data.bibliografia limit:3 %}
+        <div style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #E0D8CC;">
+          {% if item.imagem %}
+          <div style="flex-shrink:0;width:40px;border-radius:4px;overflow:hidden;">
+            <img src="{{ item.imagem | relative_url }}" alt="{{ item.titulo }}" style="width:100%;height:auto;display:block;">
+          </div>
+          {% endif %}
+          <div>
+            <p style="font-size:0.85rem;font-weight:600;color:#06392f;margin:0 0 2px;">{{ item.titulo }}</p>
+            <p style="font-size:0.75rem;color:#888;margin:0;">{{ item.autor }}</p>
+          </div>
+        </div>
+        {% else %}
+        <p style="font-size:0.85rem;color:#999;">Nenhum livro recomendado ainda.</p>
+        {% endfor %}
+        <a href="/bibliografia" style="display:inline-block;margin-top:8px;font-size:0.8rem;color:#B84A23;font-weight:600;text-decoration:none;">Ver todos →</a>
+      </section>
+
+    </div>
+
+    <!-- CENTER COLUMN -->
+    <div class="homepage__top-grid__center">
+
+      {% assign latest = site.posts[0] %}
+      {% if latest.image %}
+      {% assign featured = latest %}
+      {% elsif site.posts[1].image %}
+      {% assign featured = site.posts[1] %}
+      {% elsif site.posts[2].image %}
+      {% assign featured = site.posts[2] %}
+      {% else %}
+      {% assign featured = nil %}
+      {% endif %}
+
+      {% if featured %}
+      <a href="{{ featured.url | relative_url }}" class="feature-link">
+        <div class="homepage__top-grid__feature-image">
+          <div class="feature-img-placeholder" style="padding:0;min-height:0;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#F5F0E8;">
+            <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="homepage__top-grid__feature-details">
+          {% if featured.category %}<span class="feature-category">{{ featured.category }}</span>{% endif %}
+          <h1 class="feature-title">{{ featured.title }}</h1>
+          <p class="feature-excerpt">{{ featured.excerpt | strip_html }}</p>
+          <span class="feature-read-more">Ler artigo →</span>
+        </div>
+      </a>
+      {% else %}
+      <a href="#" class="feature-link">
+        <div class="homepage__top-grid__feature-image">
+          <div class="feature-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Em breve</span>
+          </div>
+        </div>
+        <div class="homepage__top-grid__feature-details">
+          <span class="feature-category">Blog</span>
+          <h1 class="feature-title">Nenhum artigo publicado ainda</h1>
+          <p class="feature-excerpt">Os artigos aparecerão aqui assim que forem publicados.</p>
+          <span class="feature-read-more">Ler artigo →</span>
+        </div>
+      </a>
+      {% endif %}
+
+      <section class="homepage__top-grid__recent-essays">
+        <h2 class="grid-header">Artigos Recentes</h2>
+        <div class="essay-grid">
+          {% for post in site.posts offset:1 %}
+            <article class="essay-grid__cell">
+              <a href="{{ post.url | relative_url }}" class="essay-link">
+                <div class="essay-thumb">
+                  <div class="essay-thumb-placeholder" style="background:transparent;overflow:hidden;">
+                    {% if post.image %}
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="essay-info">
+                  {% if post.category %}<span class="essay-category">{{ post.category }}</span>{% endif %}
+                  <h3 class="essay-title">{{ post.title }}</h3>
+                  <p class="essay-excerpt">{{ post.excerpt | strip_html }}</p>
+                </div>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+        <a href="{{ '/blog' | relative_url }}" class="big-link">Ver todos os artigos →</a>
+      </section>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="homepage__top-grid__right">
+
+      <section class="homepage__top-grid__contact">
+        <h2 class="section-label">Entre em Contato</h2>
+        <p class="contact-text">Deixe seu e-mail ou WhatsApp e conte o que está sentindo. Entrarei em contato.</p>
+        <form class="contact-form" onsubmit="return validarContato(event)">
+          <label for="contato-email" class="sr-only">E-mail</label>
+          <input type="email" class="contact-input" id="contato-email" placeholder="seu@email.com">
+          <label for="contato-whats" class="sr-only">WhatsApp</label>
+          <input type="text" class="contact-input" id="contato-whats" placeholder="WhatsApp (com DDD)">
+          <label for="contato-mensagem" class="sr-only">Mensagem</label>
+          <textarea class="contact-textarea" id="contato-mensagem" placeholder="Descreva o que está sentindo..." required></textarea>
+          <button type="submit" class="contact-submit">Enviar</button>
+        </form>
+      </section>
+
+      <section class="friends-group">
+        <h2 class="section-label">Grupo de Ajuda</h2>
+        <p class="friends-text">Um espaço de acolhimento onde compartilho conhecimentos sobre psicanálise e ofereço suporte para quem busca autoconhecimento e bem-estar.</p>
+        <div class="friends-group-image">
+          <div class="friends-img-placeholder" style="padding:0;overflow:hidden;border-radius:8px;">
+            <img src="{{ 'assets/images/grupo.jpg' | relative_url }}" alt="Grupo de Ajuda" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+        <div class="friends-buttons">
+          <a href="#" class="friends-btn friends-btn--whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#" class="friends-btn friends-btn--telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 2 11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Telegram
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</main>

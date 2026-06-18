@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — Notas de um Praticante de Psicanálise{% else %}Notas de um Praticante de Psicanálise{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Notas de um Praticante de Psicanálise{% endif %}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="Notas de um Praticante de Psicanálise">
+  {% if page.image %}<meta property="og:image" content="{{ page.image | relative_url }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  {% if site.url %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Pinyon+Script&family=Cutive+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <div class="title"><a href="{{ '/' | relative_url }}">
+        <span class="title-script">Notas</span>
+        <span class="title-sub">de um Praticante de <em class="title-italic">Psicanálise</em></span>
+      </a></div>
+    </div>
+    <div class="bottom-row page-width">
+      <div class="bottom-row-inner">
+        <a href="{{ '/' | relative_url }}" class="compact-title">Notas</a>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="right-block">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="mailto:contato@exemplo.com" class="social-link" aria-label="Gmail">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <button class="dark-toggle" id="dark-toggle" aria-label="Alternar modo escuro">
+            <svg class="dark-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="dark-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+        <nav class="main-nav">
+          <a href="{{ '/' | relative_url }}" class="nav-link">Início</a>
+          <a href="{{ '/blog' | relative_url }}" class="nav-link">Blog</a>
+          <a href="{{ '/frases' | relative_url }}" class="nav-link">Frases</a>
+          <a href="{{ '/arte' | relative_url }}" class="nav-link">Arte</a>
+          <a href="{{ '/bibliografia' | relative_url }}" class="nav-link">Bibliografia</a>
+          <a href="{{ '/sobre' | relative_url }}" class="nav-link">Sobre</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="paper-wrapper">
+    {{ content }}
+  </div>
+
+  <footer class="site-footer">
+    <div class="page-width">
+      <p class="footer-text">Notas de um Praticante de Psicanálise &copy; 2026 — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="{{ '/script.js' | relative_url }}"></script>
+</body>
+</html>

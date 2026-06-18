@@ -1,0 +1,73 @@
+---
+layout: default
+---
+<article class="post-page">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <p class="post-meta">{{ page.date | date_pt_br }}</p>
+
+  {% if page.image %}
+  <div class="post-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  {{ content }}
+
+  <a href="{{ '/blog' | relative_url }}" class="back-link">← Ver todos os artigos</a>
+</article>
+
+<style>
+.post-page {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+.post-page .post-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2.2rem;
+  color: #06392f;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.post-page .post-meta {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 32px;
+}
+.post-page .post-image {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-page .post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.post-page p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+.post-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 48px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #B84A23;
+}
+@media (max-width: 768px) {
+  .post-page .post-title { font-size: 1.6rem; }
+  .post-page { padding: 32px 16px 48px; }
+}
+</style>

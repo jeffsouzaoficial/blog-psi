@@ -1,0 +1,18 @@
+title: "Notas de um Praticante de Psicanálise"
+email: contato@exemplo.com
+description: "Blog pessoal e profissional sobre psicanálise e terapia."
+baseurl: ""
+url: ""
+plugins:
+  - jekyll-feed
+
+# Build settings
+permalink: /posts/:title/
+
+# Exclude
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

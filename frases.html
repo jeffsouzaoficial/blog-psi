@@ -1,0 +1,32 @@
+---
+layout: default
+title: Frases
+---
+
+<main class="page-width">
+  <div class="page-content">
+    <h1 class="page-title">Frases</h1>
+
+    <div class="frases-grid">
+      {% for item in site.data.frases %}
+      <div class="frase-item">
+        {% if item.foto %}
+        <div class="frase-avatar">
+          <img src="{{ item.foto | relative_url }}" alt="{{ item.autor }}">
+        </div>
+        {% endif %}
+        <blockquote class="frase-quote">
+          <p class="frase-text">
+            "{{ item.frase }}"
+          </p>
+          <cite class="frase-cite">
+            — {{ item.autor }}
+          </cite>
+        </blockquote>
+      </div>
+      {% else %}
+      <p style="color:#999;font-size:0.9rem;">Nenhuma frase cadastrada ainda.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>

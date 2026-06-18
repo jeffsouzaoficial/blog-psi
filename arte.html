@@ -1,0 +1,96 @@
+---
+layout: default
+title: Arte
+---
+
+<main class="page-width">
+  <div class="page-content-wide">
+    <h1 class="page-title">Arte</h1>
+
+    <div class="artes-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+      {% for item in site.data.artes %}
+      <div class="arte-thumb" onclick="abrirArte({{ forloop.index0 }})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirArte({{ forloop.index0 }})}" tabindex="0" role="button" style="cursor:pointer;border-radius:8px;overflow:hidden;aspect-ratio:1;background:#F5F0E8;position:relative;">
+        <img src="{{ item.imagem | relative_url }}" alt="{{ item.titulo }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:12px;color:#fff;font-size:0.85rem;font-weight:600;">
+          {{ item.titulo }}
+        </div>
+      </div>
+      {% else %}
+      <p style="color:#999;font-size:0.9rem;grid-column:1/-1;">Nenhuma arte cadastrada ainda.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+<div id="arte-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:center;padding:40px;">
+  <button onclick="fecharArte()" aria-label="Fechar" style="position:absolute;top:16px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;z-index:10;">&times;</button>
+
+  <button onclick="navegar(-1)" aria-label="Anterior" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:2rem;padding:12px 16px;border-radius:8px;cursor:pointer;z-index:10;">&lsaquo;</button>
+
+  <div onclick="fecharArte()" style="max-width:900px;max-height:90vh;background:#fff;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;">
+    <div onclick="event.stopPropagation()" style="position:relative;">
+      <img id="modal-imagem" src="" alt="" style="width:100%;max-height:65vh;object-fit:contain;background:#000;display:block;">
+    </div>
+    <div onclick="event.stopPropagation()" style="padding:20px 24px;">
+      <h2 id="modal-titulo" style="font-size:1.2rem;color:#06392f;margin:0 0 2px;"></h2>
+      <p id="modal-autor" style="font-size:0.85rem;color:#888;margin:0 0 8px;"></p>
+      <p id="modal-descricao" style="font-size:0.9rem;line-height:1.5;color:#444;margin:0;"></p>
+    </div>
+  </div>
+
+  <button onclick="navegar(1)" aria-label="Próximo" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:2rem;padding:12px 16px;border-radius:8px;cursor:pointer;z-index:10;">&rsaquo;</button>
+</div>
+
+<script>
+const artes = [
+//Liquid (linguagem de template do Jekyll)
+//PARA CADA item DENTRO DE site.data.artes FAÇA:
+  {% for item in site.data.artes %} // "PRA CADA" obra:
+  {
+    imagem: "{{ item.imagem | relative_url }}", // CAMINHO da imagem da obra
+    titulo: "{{ item.titulo }}", // TÍTULO da obra
+    autor: "{{ item.autor }}", // AUTOR da obra
+    descricao: "{{ item.descricao }}" // DESCRIÇÃO da obra (sem ví­rgula no final)
+   
+  }{% unless forloop.last %} // "A MENOS QUE" seja a Última:
+  , //coloca ví­rgula
+  {% endunless %} //FIM do "A MENOS QUE".
+  {% endfor %} //FIM do "PRA CADA".
+];
+
+//Cria uma variável chamada indiceAtual que começa valendo 0.
+let indiceAtual = 0;
+
+function abrirArte(i) {
+  indiceAtual = i; //guarda qual obra foi clicada
+  mostrarArte(); //executa a function mostrarArte() agora, que preenche o modal. Modal=janela que aparece por cima da página, bloqueando o conteúdo atrás
+  document.getElementById('arte-modal').style.display = 'flex'; // mostra o modal na tela.
+  document.body.style.overflow = 'hidden'; // trava a rolagem da página quando o modal abre.
+}
+
+function mostrarArte() {  // Uma function que vai preencher o modal
+  const item = artes[indiceAtual]; // pega a obra atual do array. array é uma lista numerada que começa no 0.
+  document.getElementById('modal-imagem').src = item.imagem; // coloca a imagem no modal.
+  document.getElementById('modal-imagem').alt = item.titulo; // COLOCA o tí­tulo como texto (alt) alternativo.
+  document.getElementById('modal-titulo').textContent = item.titulo; // coloca o tí­tulo no h2.
+  document.getElementById('modal-autor').textContent = item.autor ? '— ' + item.autor : ''; // coloca o autor ou vazio.
+  document.getElementById('modal-descricao').textContent = item.descricao; // coloca a descrição no p.
+}
+
+function navegar(dir) {  // cria function de navegação, dir (direção) = -1 (anterior) ou 1 (próximo)
+  indiceAtual = (indiceAtual + dir + artes.length) % artes.length;  // (posição atual + direção + total de obras) % total = nova posição sem sair da lista.
+  mostrarArte();  // atualiza o modal com a nova obra
+}
+
+function fecharArte() {  // CRIA function que fecha o modal
+  document.getElementById('arte-modal').style.display = 'none'; // ESCONDE o modal (display = none = invisí­vel)
+  document.body.style.overflow = ''; // VOLTA o scroll ao normal ('' = vazio = padrão)
+}
+
+//A página inteira."FICA DE OLHO" quando alguém aperta uma tecla('tecla foi pressionada', função roda.
+document.addEventListener('keydown', function(e) {  // FICA ESCUTANDO quando uma tecla é pressionada na página
+  if (e.key === 'Escape') fecharArte();  // SE a tecla for "Esc", CHAMA fecharArte()
+  if (e.key === 'ArrowLeft') navegar(-1); // SE for seta esquerda, VAI pra obra anterior
+  if (e.key === 'ArrowRight') navegar(1);  // SE for seta direita, VAI pra próxima obra
+});
+</script>
