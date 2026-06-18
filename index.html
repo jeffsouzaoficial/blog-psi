@@ -151,13 +151,14 @@ title: Blog
       <section class="homepage__top-grid__contact">
         <h2 class="section-label">Entre em Contato</h2>
         <p class="contact-text">Deixe seu e-mail ou WhatsApp e conte o que está sentindo. Entrarei em contato.</p>
-        <form class="contact-form" onsubmit="return validarContato(event)">
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="return validarContato(event)">
+          <input type="hidden" name="access_key" value="3b43aa98-b75a-4758-86a8-18aff08bfc4a">
           <label for="contato-email" class="sr-only">E-mail</label>
-          <input type="email" class="contact-input" id="contato-email" placeholder="seu@email.com">
+          <input type="email" name="email" class="contact-input" id="contato-email" placeholder="seu@email.com">
           <label for="contato-whats" class="sr-only">WhatsApp</label>
-          <input type="text" class="contact-input" id="contato-whats" placeholder="WhatsApp (com DDD)">
+          <input type="text" name="whatsapp" class="contact-input" id="contato-whats" placeholder="WhatsApp (com DDD)">
           <label for="contato-mensagem" class="sr-only">Mensagem</label>
-          <textarea class="contact-textarea" id="contato-mensagem" placeholder="Descreva o que está sentindo..." required></textarea>
+          <textarea class="contact-textarea" name="message" id="contato-mensagem" placeholder="Descreva o que está sentindo..." required></textarea>
           <button type="submit" class="contact-submit">Enviar</button>
         </form>
       </section>

@@ -103,6 +103,5 @@ function validarContato(e) {
     alert('Descreva o que está sentindo.');
     return false;
   }
-  alert('Mensagem enviada! Em breve entrarei em contato.');
-  return false;
+  return true;
 }
