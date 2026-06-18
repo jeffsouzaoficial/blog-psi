@@ -4,7 +4,7 @@ title: "O que é a ansiedade? Entenda o sinal de alerta do seu inconsciente"
 category: Conceitos
 image: assets/posts/ansiedade1.jpg
 excerpt: " "
-date: 2026-06-11 08:00:00 -0300
+date: 2026-06-11 
 ---
 
 Sentir ansiedade regularmente é cansativo, mas seria ela a vilã da sua história? Entender que a ansiedade é o principal sinal do seu inconsciente marca o inicio de um saber real.
