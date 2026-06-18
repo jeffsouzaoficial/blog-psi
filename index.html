@@ -30,6 +30,7 @@ title: Blog
         </blockquote>
       </section>
 
+      {% if site.show_arte %}
       {% assign ultima_arte = site.data.artes | last %}
       <section class="homepage__prints-promo">
         <h2 class="section-label">Arte</h2>
@@ -50,6 +51,7 @@ title: Blog
         </div>
         {% endif %}
       </section>
+      {% endif %}
 
       <section class="homepage__bibliografia">
         <h2 class="section-label">Bibliografia</h2>
