@@ -34,7 +34,7 @@ title: Blog
       <section class="homepage__prints-promo">
         <h2 class="section-label">Arte</h2>
         {% if ultima_arte %}
-        <a href="/arte" style="text-decoration:none;color:inherit;">
+        <a href="{{ '/arte' | relative_url }}" style="text-decoration:none;color:inherit;">
           <div style="border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:#F5F0E8;">
             <img src="{{ ultima_arte.imagem | relative_url }}" alt="{{ ultima_arte.titulo }}" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
@@ -68,7 +68,7 @@ title: Blog
         {% else %}
         <p style="font-size:0.85rem;color:#999;">Nenhum livro recomendado ainda.</p>
         {% endfor %}
-        <a href="/bibliografia" style="display:inline-block;margin-top:8px;font-size:0.8rem;color:#B84A23;font-weight:600;text-decoration:none;">Ver todos →</a>
+        <a href="{{ '/bibliografia' | relative_url }}" style="display:inline-block;margin-top:8px;font-size:0.8rem;color:#B84A23;font-weight:600;text-decoration:none;">Ver todos →</a>
       </section>
 
     </div>
