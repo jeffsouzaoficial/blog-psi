@@ -1,9 +1,7 @@
-- titulo: ""
-  imagem: ""
-  descricao: ""
-  autor: ""
-
-- titulo: "Exemplo Arte 2"
-  imagem: "assets/artes/casal.jpg"
-  descricao: "Breve explicação sobre esta arte."
-  autor: "Nome do Artista"
+# Lista de artes
+# Exemplo de como adicionar uma arte:
+#
+# - titulo: "Título da Obra"
+#   imagem: "assets/artes/nome-do-arquivo.jpg"
+#   descricao: "Breve descrição sobre a arte."
+#   autor: "Nome do Artista"
