@@ -1,7 +1,7 @@
-- titulo: "Exemplo Arte"
-  imagem: "assets/artes/flores.jpg"
-  descricao: "Breve explicação sobre esta arte."
-  autor: "Nome do Artista"
+- titulo: ""
+  imagem: ""
+  descricao: ""
+  autor: ""
 
 - titulo: "Exemplo Arte 2"
   imagem: "assets/artes/casal.jpg"
