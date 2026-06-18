@@ -2,7 +2,7 @@ title: "Notas de um Praticante de Psicanálise"
 email: contato@exemplo.com
 description: "Blog pessoal e profissional sobre psicanálise e terapia."
 url: "https://jeffsouzaoficial.github.io"
-baseurl: "/meu-blog-jekyll"
+baseurl: "/blog-psi"
 plugins:
   - jekyll-feed
 
