@@ -5,6 +5,7 @@ url: "https://jeffsouzaoficial.github.io"
 baseurl: "/blog-psi"
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 show_friends_group: false
 show_arte: false
