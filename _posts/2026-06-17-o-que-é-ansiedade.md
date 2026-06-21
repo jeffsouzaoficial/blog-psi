@@ -3,7 +3,7 @@ layout: post
 title: "O que é a ansiedade? Entenda o sinal de alerta do seu inconsciente"
 category: Conceitos
 image: assets/posts/ansiedade1.jpg
-excerpt: " "
+description: "Entenda por que a ansiedade não é uma vilã, mas um sinal de alerta do inconsciente. A psicanálise explica como interpretar esse sintoma."
 date: 2026-06-11 
 ---
 
